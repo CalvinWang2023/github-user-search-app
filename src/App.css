@@ -1,0 +1,15 @@
+:root {
+    --blue: hsl(212, 100%, 50%);
+    --light-blue: hsl(217, 20%, 51%);
+    --dark-blue: hsl(217, 35%, 45%);
+    --darker-blue: hsl(222, 41%, 20%);
+    --very-darker-blue: hsl(217, 21%, 21%);
+    --darkest-blue: hsl(220, 40%, 13%);
+    --very-light-blue: hsl(227, 100%, 98%);
+    --white: hsl(0, 0%, 100%);    
+}
+
+body {
+    font-family: 'Space Mono', monospace;
+    font-size: 15px;
+}
