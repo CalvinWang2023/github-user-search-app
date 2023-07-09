@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useContext } from "react";
 
 import "../App.css";
 import "../styles/Navbar.css";
+
+import { ThemeContext } from "../App";
 
 import sunIcon from "../assets/sunIcon.svg";
 import moonIcon from "../assets/moonIcon.svg";
 
 const Navbar = () => {
-    const [moonTheme, setMoonTheme] = useState(true);
+    const { moonTheme, setMoonTheme } = useContext(ThemeContext);
 
     if (moonTheme) {
         document.body.style.backgroundColor = 'var(--darkest-blue)';
@@ -20,7 +22,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar">
+        <div className={ moonTheme ? "navbar navbarMoonTheme" : "navbar navbarSunTheme" }>
             <h1>GithubFinder</h1>
             <div className="switch" onClick={themeHandler}>
                 <p>{ moonTheme ? 'Light' : 'dark' }</p>

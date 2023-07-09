@@ -1,0 +1,31 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 730px;
+}
+
+.navbarSunTheme {
+    color: var(--darkest-blue);
+}
+
+.navbarMoonTheme {
+    color: var(--white);
+}
+
+.switch {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.switch img {
+    width: 30px;
+    height: 30px;
+}
