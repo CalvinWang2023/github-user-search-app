@@ -1,24 +1,29 @@
-import { useContext } from "react";
+import { createContext, useContext, useEffect } from "react";
 
 import { useState } from "react";
 import searchIcon from "../assets/searchIcon.svg";
 
 import "../styles/Search.css";
 
-import { ThemeContext } from "../App";
+import { AppContext } from "../App";
+
+export const DataContext = createContext();
 
 const Search = () => {
-    const { moonTheme } = useContext(ThemeContext);
+    const { moonTheme, setUserData, result, setResult } = useContext(AppContext);
 
-    const [userData, setUserData] = useState({});
     const [searchUser, setSearchUser] = useState('');
 
+    const [errorMsg, setErrorMsg] = useState('');
+    
     async function searchUsers (username) {
-        const response = await fetch(`https://api.github.com/users/${username}`);
+        const response = await fetch(`https://api.github.com/users/${username}`, {cache: "no-cache"});
 
         // if error
         if (!response.ok) {
-            //TODO
+            setResult(false);
+            setErrorMsg('No Result');
+            return;
         }
 
         const data = await response.json();
@@ -45,7 +50,7 @@ const Search = () => {
 
         setUserData(data);
 
-        console.log(data);
+        setResult(true);
     };
 
     function onChangeHandler(e) {
@@ -55,27 +60,41 @@ const Search = () => {
     function keyDownHandler(e) {
         if (e.key === 'Enter') {
             e.preventDefault();
-            SearchUserHandler(searchUser);
+            SearchUserHandler();
         }
     }
 
     function SearchUserHandler() {
+        if (searchUser === '') {
+            setResult(false);
+            setErrorMsg('Field Empty');
+            return;
+        }
         searchUsers(searchUser);
     }
 
+    useEffect(() => {
+        searchUsers("Octocat");
+    }, []);
+
     return (
-        <div className={ moonTheme ? "searchBar searchbarMoonTheme" : "searchBar searchbarSunTheme" }>
-            <img src={ searchIcon } alt="Search Icon" />
-            <input 
-                type="text" 
-                name="searchInput" 
-                placeholder="Search GitHub Username..." 
-                value={searchUser}
-                onChange={onChangeHandler}
-                onKeyDown={keyDownHandler}
-                className={ moonTheme ? "inputMoonTheme" : "inputSunTheme" } />
-            <button onClick={SearchUserHandler}>Search</button>
-        </div>
+            <div className={ moonTheme ? "searchBar searchbarMoonTheme" : "searchBar searchbarSunTheme" }>
+                <div className="search-container">
+                    <img src={ searchIcon } alt="Search Icon" />
+                    <input 
+                        type="text" 
+                        name="searchInput" 
+                        placeholder="Search GitHub Username..." 
+                        value={searchUser}
+                        onChange={onChangeHandler}
+                        onKeyDown={keyDownHandler}
+                        className={ moonTheme ? "inputMoonTheme" : "inputSunTheme" } />
+                </div>
+                <p className="error">
+                    { result ? '' : errorMsg }
+                </p>
+                <button onClick={SearchUserHandler}>Search</button>
+            </div>
     );
 };
 

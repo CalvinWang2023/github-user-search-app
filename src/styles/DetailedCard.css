@@ -1,0 +1,119 @@
+.detailedCard {   
+    border-radius: 10px;
+    margin-top: 2rem;
+    padding: 3rem;
+    width: 730px;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.detailedCardMoonTheme {
+    background-color: var(--darker-blue);
+    color: var(--white);
+}
+
+.detailedCardSunTheme {
+    background-color: var(--white);
+    color: var(--darkest-blue);
+    box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.1986);
+}
+
+.avatar {
+    width: 10rem;
+    height: 10.5rem;
+    float: left;
+}
+
+.avatar img {
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h2 {
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.content .login {
+    text-decoration: none;
+    color: var(--blue);
+    font-size: 1.1rem;
+}
+
+.content .login::before {
+    content: "@";
+}
+
+.stats-record {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+    gap: 3rem;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+}
+
+.stats {
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.statsMoonTheme {
+    background-color: var(--darkest-blue);
+}
+
+.statsSunTheme {
+    background-color:var(--very-light-blue);
+}
+
+.personal-info-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 4rem;
+    row-gap: 1rem;
+}
+
+.personal-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.personal-info-list a {
+    text-decoration: none;
+}
+
+.personal-info-list .linkMoonTheme {
+    color: var(--white);
+}
+
+.personal-info-list .linkSunTheme {
+    color: var(--darkest-blue);
+}
+
+.blank {
+    color: grey;
+}

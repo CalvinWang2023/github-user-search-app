@@ -3,13 +3,13 @@ import { useContext } from "react";
 import "../App.css";
 import "../styles/Navbar.css";
 
-import { ThemeContext } from "../App";
+import { AppContext } from "../App";
 
 import sunIcon from "../assets/sunIcon.svg";
 import moonIcon from "../assets/moonIcon.svg";
 
 const Navbar = () => {
-    const { moonTheme, setMoonTheme } = useContext(ThemeContext);
+    const { moonTheme, setMoonTheme } = useContext(AppContext);
 
     if (moonTheme) {
         document.body.style.backgroundColor = 'var(--darkest-blue)';
